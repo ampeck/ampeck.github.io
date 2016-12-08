@@ -118,9 +118,16 @@
             document.getElementById('heading').innerHTML = questions[questionId - 1].heading;
             console.log(window.location.search.split('=')[1]);
 
+            // body paragraphs
             let templateString = '<% _.each(body, (paragraph) => { %> <p><%- paragraph %></p> <% }); %>';
             let template = _.template(templateString);
             document.getElementById("paragraphs").innerHTML = (template({body:questions[questionId - 1].body}));
+
+            // buttons
+            let buttonTemplString = '<% _.each(buttons, (btn) => { %> <a href = <%- "question.html?id=" + btn.child_id %>' +
+                ' role = "button" class = "btn btn-default btn-lg btn-block"><%- btn.name %></a> <% }); %>';
+            let buttonTempl = _.template(buttonTemplString);
+            document.getElementById("buttons").innerHTML = buttonTempl({buttons: questions[questionId - 1].buttons});
         }
     </script>
 </head>
