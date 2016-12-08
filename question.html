@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Question</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
     <script language="JavaScript">
         let questions = [{id: 1, heading: "First, we need to know", body: ["Have you ever been sued by a company that says you " +
         "owe them money?", "You should have received a paper named \"Civil Warrant,\" or \"Sworn Account.\"", "The " +
@@ -117,9 +118,9 @@
             document.getElementById('heading').innerHTML = questions[questionId - 1].heading;
             console.log(window.location.search.split('=')[1]);
 
-            let templateString = '<% _.each(body, (paragraph) => { %> <p><%- paragrpah %></p> <% }); %>';
+            let templateString = '<% _.each(body, (paragraph) => { %> <p><%- paragraph %></p> <% }); %>';
             let template = _.template(templateString);
-            document.getElementById("paragraphs").appendChild(template({questions[questionId - 1].body}));
+            document.getElementById("paragraphs").innerHTML = (template({body:questions[questionId - 1].body}));
         }
     </script>
 </head>
