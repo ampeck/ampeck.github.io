@@ -27,7 +27,7 @@ function loadQuestion() {
             if (questions2[questionId -1].button1name) {
                 console.log('in if');
                 console.log(String(questions2[questionId-1].button1name));
-                let button1 = document.createElement('button');
+                let button1 = document.createElement('a');
                 button1.innerHTML = questions2[questionId-1].button1name;
                 button1.className = "btn btn-default btn-lg btn-block";
                 button1.setAttribute('href', "question.html?id=" + questions2[questionId - 1].button1link);
@@ -38,7 +38,7 @@ function loadQuestion() {
             if (questions2[questionId -1].button2name) {
                 console.log('in if');
                 console.log(String(questions2[questionId-1].button2name));
-                let button2 = document.createElement('button');
+                let button2 = document.createElement('a');
                 button2.innerHTML = questions2[questionId-1].button2name;
                 button2.className = "btn btn-default btn-lg btn-block";
                 console.log ("question.html?id=" + questions2[questionId - 1].button2link);
@@ -50,7 +50,7 @@ function loadQuestion() {
             if (questions2[questionId -1].button3name) {
                 console.log('in if');
                 console.log(String(questions2[questionId-1].button3name));
-                let button3 = document.createElement('button');
+                let button3 = document.createElement('a');
                 button3.innerHTML = questions2[questionId-1].button3name;
                 button3.className = "btn btn-default btn-lg btn-block";
                 console.log ("question.html?id=" + questions2[questionId - 1].button3link);
