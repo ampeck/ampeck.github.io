@@ -30,7 +30,8 @@ function loadQuestion() {
                 let button1 = document.createElement('button');
                 button1.innerHTML = questions2[questionId-1].button1name;
                 button1.className = "btn btn-default btn-lg btn-block";
-                button1.href = "question.html?id=" + questions2[questionId - 1].button1link;
+                button1.setAttribute('href', "question.html?id=" + questions2[questionId - 1].button1link);
+                button1.setAttribute('role', 'button');
                 buttonsDiv.append(button1);
             }
             // button2
@@ -42,6 +43,7 @@ function loadQuestion() {
                 button2.className = "btn btn-default btn-lg btn-block";
                 console.log ("question.html?id=" + questions2[questionId - 1].button2link);
                 button2.setAttribute('href', "question.html?id=" + questions2[questionId - 1].button2link);
+                button2.setAttribute('role', 'button');
                 buttonsDiv.append(button2);
             }
             // button3
@@ -53,6 +55,7 @@ function loadQuestion() {
                 button3.className = "btn btn-default btn-lg btn-block";
                 console.log ("question.html?id=" + questions2[questionId - 1].button3link);
                 button3.setAttribute('href', "question.html?id=" + questions2[questionId - 1].button3link);
+                button3.setAttribute('role', 'button');
                 buttonsDiv.append(button3);
             }
         }
