@@ -4,60 +4,62 @@
 
 function loadQuestion() {
     // use PapaParse library to convert csv to JSON
-    Papa.parse('https://ampeck.github.io/questions2.csv', {
+    Papa.parse('https://ampeck.github.io/questions.csv', {
         download: true,
         header: true,
         dynamicTyping: true,
+
+
         complete: function (results, file) {
             console.log('Parsing complete', results.data);
+            let questions = results.data;
 
-            let questions2 = results.data;
+            //let questionId = window.location.search.split('=')[1];
+            let questionId = 6;
 
-            let questionId = window.location.search.split('=')[1];
-            //let questionId = 1;
-            document.getElementById('heading').innerHTML = questions2[questionId - 1].heading;
-            console.log(window.location.search.split('=')[1]);
+            let arrayIndex = getQuestionById(questions, questionId);
+            // TODO: check and see if id is not in range and redirect to home page or a 404 page
 
-            // body paragraphs
-            document.getElementById('paragraphs').innerHTML = String(questions2[questionId - 1].body);
+            // render heading and body paragraphs
+            document.getElementById('heading').innerHTML = questions[arrayIndex].heading;
+            document.getElementById('paragraphs').innerHTML = String(questions[arrayIndex].body);
 
-            // buttons
-            let buttonsDiv = document.getElementById('buttons');
-            // button1
-            if (questions2[questionId -1].button1name) {
-                console.log('in if');
-                console.log(String(questions2[questionId-1].button1name));
-                let button1 = document.createElement('a');
-                button1.innerHTML = questions2[questionId-1].button1name;
-                button1.className = "btn btn-default btn-lg btn-block";
-                button1.setAttribute('href', "question.html?id=" + questions2[questionId - 1].button1link);
-                button1.setAttribute('role', 'button');
-                buttonsDiv.append(button1);
+            // render buttons
+            let buttonDiv = document.getElementById('buttons');
+
+            if (questions[arrayIndex].button1name) {
+                addButton(questions[arrayIndex].button1name, questions[arrayIndex].button1name, buttonDiv)
             }
-            // button2
-            if (questions2[questionId -1].button2name) {
-                console.log('in if');
-                console.log(String(questions2[questionId-1].button2name));
-                let button2 = document.createElement('a');
-                button2.innerHTML = questions2[questionId-1].button2name;
-                button2.className = "btn btn-default btn-lg btn-block";
-                console.log ("question.html?id=" + questions2[questionId - 1].button2link);
-                button2.setAttribute('href', "question.html?id=" + questions2[questionId - 1].button2link);
-                button2.setAttribute('role', 'button');
-                buttonsDiv.append(button2);
+            if (questions[arrayIndex].button2name) {
+                addButton(questions[arrayIndex].button2name, questions[arrayIndex].button2name, buttonDiv)
             }
-            // button3
-            if (questions2[questionId -1].button3name) {
-                console.log('in if');
-                console.log(String(questions2[questionId-1].button3name));
-                let button3 = document.createElement('a');
-                button3.innerHTML = questions2[questionId-1].button3name;
-                button3.className = "btn btn-default btn-lg btn-block";
-                console.log ("question.html?id=" + questions2[questionId - 1].button3link);
-                button3.setAttribute('href', "question.html?id=" + questions2[questionId - 1].button3link);
-                button3.setAttribute('role', 'button');
-                buttonsDiv.append(button3);
+            if (questions[arrayIndex].button3name) {
+                addButton(questions[arrayIndex].button3name, questions[arrayIndex].button3name, buttonDiv)
             }
         }
     });
+}
+
+// Adds a button to buttonDiv with text buttonName and the button when clicked
+// will render the question with number n or a pdf document
+// TODO: test with a pdf document
+function addButton(buttonName, nextId, buttonDiv) {
+    let button = document.createElement('a');
+    button.innerHTML = buttonName;
+    button.className = "btn btn-default btn-lg btn-block";
+    button.setAttribute('href', "question.html?id=" + nextId);
+    button.setAttribute('role', 'button');
+    buttonDiv.appendChild(button);
+}
+
+// finds question in array with id === targetId
+// returns index in which this can be located in array
+function getQuestionById(data, targetId) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].id === targetId) {
+
+            return i;
+        }
+    }
+    return -1;
 }
