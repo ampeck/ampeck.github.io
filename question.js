@@ -12,6 +12,7 @@ function loadQuestion() {
             let questions = results.data;
 
             let questionId = window.location.search.split('=')[1];
+            console.log('question id: ' + questionId);
             let arrayIndex = getQuestionById(questions, questionId);
 
             // render heading and body paragraphs
