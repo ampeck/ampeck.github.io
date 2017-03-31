@@ -24,13 +24,13 @@ function loadQuestion() {
             let buttonDiv = document.getElementById('buttons');
 
             if (questions[arrayIndex].button1name) {
-                addButton(questions[arrayIndex].button1name, questions[arrayIndex].button1name, buttonDiv)
+                addButton(questions[arrayIndex].button1name, questions[arrayIndex].button1link, buttonDiv)
             }
             if (questions[arrayIndex].button2name) {
-                addButton(questions[arrayIndex].button2name, questions[arrayIndex].button2name, buttonDiv)
+                addButton(questions[arrayIndex].button2name, questions[arrayIndex].button2link, buttonDiv)
             }
             if (questions[arrayIndex].button3name) {
-                addButton(questions[arrayIndex].button3name, questions[arrayIndex].button3name, buttonDiv)
+                addButton(questions[arrayIndex].button3name, questions[arrayIndex].button3link, buttonDiv)
             }
         }
     });
