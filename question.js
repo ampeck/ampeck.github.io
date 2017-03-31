@@ -18,19 +18,19 @@ function loadQuestion() {
             console.log('question: ' + question);
 
             // render heading and body paragraphs
-            document.getElementById('heading').innerHTML = question.heading;
+            document.getElementById('heading').innerHTML = String(question.heading);
             document.getElementById('paragraphs').innerHTML = String(question.body);
 
             // render buttons
             let buttonDiv = document.getElementById('buttons');
 
-            if (questions[arrayIndex].button1name) {
+            if (question.button1name) {
                 addButton(question.button1name, question.button1link, buttonDiv)
             }
-            if (questions[arrayIndex].button2name) {
+            if (question.button2name) {
                 addButton(question.button2name, question.button2link, buttonDiv)
             }
-            if (questions[arrayIndex].button3name) {
+            if (question.button3name) {
                 addButton(question.button3name, question.button3link, buttonDiv)
             }
         }
