@@ -1,3 +1,4 @@
+let NO_VALID_ID = 'no valid id';
 
 function loadQuestion() {
     // use PapaParse library to convert csv to JSON
@@ -11,26 +12,26 @@ function loadQuestion() {
             console.log('Parsing complete', results.data);
             let questions = results.data;
 
-            let questionId = window.location.search.split('=')[1];
+            let questionId = parseInt(window.location.search.split('=')[1]);
             console.log('question id: ' + questionId);
-            let arrayIndex = getQuestionById(questions, questionId);
-            console.log('array index: ' + arrayIndex);
+            let question = getQuestionById(questions, questionId);
+            console.log('question: ' + question);
 
             // render heading and body paragraphs
-            document.getElementById('heading').innerHTML = questions[arrayIndex].heading;
-            document.getElementById('paragraphs').innerHTML = String(questions[arrayIndex].body);
+            document.getElementById('heading').innerHTML = question.heading;
+            document.getElementById('paragraphs').innerHTML = String(question.body);
 
             // render buttons
             let buttonDiv = document.getElementById('buttons');
 
             if (questions[arrayIndex].button1name) {
-                addButton(questions[arrayIndex].button1name, questions[arrayIndex].button1link, buttonDiv)
+                addButton(question.button1name, question.button1link, buttonDiv)
             }
             if (questions[arrayIndex].button2name) {
-                addButton(questions[arrayIndex].button2name, questions[arrayIndex].button2link, buttonDiv)
+                addButton(question.button2name, question.button2link, buttonDiv)
             }
             if (questions[arrayIndex].button3name) {
-                addButton(questions[arrayIndex].button3name, questions[arrayIndex].button3link, buttonDiv)
+                addButton(question.button3name, question.button3link, buttonDiv)
             }
         }
     });
@@ -54,9 +55,8 @@ function getQuestionById(data, targetId) {
     for (let i = 0; i < data.length; i++) {
         console.log('target: ' + targetId + ", id: " + data[i].id);
         if (data[i].id === targetId) {
-
-            return i;
+            return data[i];
         }
     }
-    return -1;
+    return NO_VALID_ID;
 }
