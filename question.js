@@ -51,6 +51,7 @@ function addButton(buttonName, nextId, buttonDiv) {
 // returns index in which this can be located in array
 function getQuestionById(data, targetId) {
     for (let i = 0; i < data.length; i++) {
+        console.log('target: ' + targetId + ", id: " + data[i].id);
         if (data[i].id === targetId) {
 
             return i;
