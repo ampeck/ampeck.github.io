@@ -14,6 +14,7 @@ function loadQuestion() {
             let questionId = window.location.search.split('=')[1];
             console.log('question id: ' + questionId);
             let arrayIndex = getQuestionById(questions, questionId);
+            console.log('array index: ' + arrayIndex);
 
             // render heading and body paragraphs
             document.getElementById('heading').innerHTML = questions[arrayIndex].heading;
