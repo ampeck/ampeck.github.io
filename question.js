@@ -1,6 +1,3 @@
-/**
- * Created by ashleypeck on 3/1/17.
- */
 
 function loadQuestion() {
     // use PapaParse library to convert csv to JSON
@@ -14,11 +11,8 @@ function loadQuestion() {
             console.log('Parsing complete', results.data);
             let questions = results.data;
 
-            //let questionId = window.location.search.split('=')[1];
-            let questionId = 6;
-
+            let questionId = window.location.search.split('=')[1];
             let arrayIndex = getQuestionById(questions, questionId);
-            // TODO: check and see if id is not in range and redirect to home page or a 404 page
 
             // render heading and body paragraphs
             document.getElementById('heading').innerHTML = questions[arrayIndex].heading;
@@ -41,8 +35,7 @@ function loadQuestion() {
 }
 
 // Adds a button to buttonDiv with text buttonName and the button when clicked
-// will render the question with number n or a pdf document
-// TODO: test with a pdf document
+// will render the question with number n
 function addButton(buttonName, nextId, buttonDiv) {
     let button = document.createElement('a');
     button.innerHTML = buttonName;
