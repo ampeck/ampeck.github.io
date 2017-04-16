@@ -43,8 +43,13 @@ function addButton(buttonName, nextId, buttonDiv) {
     let button = document.createElement('a');
     button.innerHTML = buttonName;
     button.className = "btn btn-default btn-lg btn-block";
-    button.setAttribute('href', "question.html?id=" + nextId);
     button.setAttribute('role', 'button');
+    nextIdSplit = nextId.split('.');
+    if (nextIdSplit.length == 1) {
+        button.setAttribute('href', "question.html?id=" + nextId);
+    } else {
+        button.setAttribute('href', nextId);
+    }
     buttonDiv.appendChild(button);
 }
 
