@@ -49,7 +49,7 @@ function addButton(buttonName, nextId, buttonDiv) {
         button.setAttribute('href', "question.html?id=" + nextId);
     } else {
         button.setAttribute('href', nextId);
-        button.setAttribute('download', "proposed_file_name");
+        //button.setAttribute('download', "proposed_file_name");
     }
     buttonDiv.appendChild(button);
 }
