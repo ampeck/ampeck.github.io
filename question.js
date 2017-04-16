@@ -44,7 +44,7 @@ function addButton(buttonName, nextId, buttonDiv) {
     button.innerHTML = buttonName;
     button.className = "btn btn-default btn-lg btn-block";
     button.setAttribute('role', 'button');
-    nextIdSplit = nextId.toString(split('.'));
+    nextIdSplit = nextId.toString().split('.');
     if (nextIdSplit.length == 1) {
         button.setAttribute('href', "question.html?id=" + nextId);
     } else {
